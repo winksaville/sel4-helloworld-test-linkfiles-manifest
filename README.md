@@ -1,10 +1,21 @@
 This manifest tests the LinkFile modifications I implemented
 for repo here: https://gerrit-review.googlesource.com/#/c/68241/
+and then did the following to sync the repoository:
 
-Unless the above change is applied to <root>/.repo/repo the resulting
-repo sync will not contain expected files in <root>/srcs or <root>configs:
 ```
-wink@desktop:~/prgs/seL4-projects/helloworld-test-linkfiles$ ls -al srcs
+mkdir helloworld-test-linkfiles-2
+cd helloworld-test-linkfiles-2/
+repo init -u https://github.com/winksaville/sel4-helloworld-test-linkfiles-manifest
+cd .repo/repo
+git pull origin master
+git checkout master
+git checkout -b test-linkfiles 
+git fetch https://gerrit.googlesource.com/git-repo refs/changes/41/68241/2 && git cherry-pick FETCH_HEAD
+repo sync
+```
+This results in the following in <root>/srcs or <root>configs:
+```
+helloworld-test-linkfiles-2$ ls -al srcs
 total 12
 drwxrwxr-x  2 wink wink 4096 Jun  1 11:43 .
 drwxrwxr-x 10 wink wink 4096 Jun  1 11:43 ..
@@ -40,13 +51,9 @@ lrwxrwxrwx  1 wink wink   56 Jun  1 11:43 vspace_internal.h -> ../libs/libsel4ut
 
 
 
-wink@desktop:~/prgs/seL4-projects/helloworld-test-linkfiles$ ls -al configs
+helloworld-test-linkfiles$ ls -al configs
 total 12
 drwxrwxr-x  2 wink wink 4096 Jun  1 11:43 .
 drwxrwxr-x 10 wink wink 4096 Jun  1 11:43 ..
 lrwxrwxrwx  1 wink wink   70 Jun  1 11:43 ia32_simulation_helloworld_defconfig -> ../apps/helloworld/master-configs/ia32_simulation_helloworld_defconfig
 ```
-
-
-
-

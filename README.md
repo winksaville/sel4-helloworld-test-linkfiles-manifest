@@ -10,9 +10,9 @@ cd .repo/repo
 git pull origin master
 git checkout master
 git checkout -b test-linkfiles 
-git fetch https://gerrit.googlesource.com/git-repo refs/changes/41/68241 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.googlesource.com/git-repo refs/changes/41/68241/3 && git cherry-pick FETCH_HEAD
 repo sync
-../../test_LinkFiles.py
+../../test_LinkFile.py
 ```
 This should result in:
 ```

@@ -12,7 +12,7 @@ git checkout master
 git checkout -b test-linkfiles 
 git fetch https://gerrit.googlesource.com/git-repo refs/changes/41/68241/3 && git cherry-pick FETCH_HEAD
 repo sync
-../../test_LinkFile.py
+../../test_LinkFile.py ../../
 ```
 This should result in:
 ```

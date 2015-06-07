@@ -24,6 +24,9 @@
       <linkfile src="Kconfig" dest="Kconfig"/>
       <linkfile src="newapp.sh" dest="newapp.sh"/>
   </project>
+  <project name="test_LinkFiles.git" path="tools/tests">
+      <linkfile src=test_LinkFiles.py dest="test_LinkFiles.py">
+  </project>
   <project name="common-tool.git" path="tools/common"/>
   <project name="kbuild-tool.git" path="tools/kbuild"/>
   <project name="elfloader-tool.git" path="tools/elfloader"/>

@@ -18,3 +18,10 @@ This should result in:
 ```
 Success
 ```
+For subsequent tests reset the environment back so you can reexecute "repo sync"
+```
+rm -rf ../../* ../../.build ../project.list ../project-objects ../projects ../.repo_fetchtimes.json
+repo sync
+../../test_LinkFile.py ../../
+
+```
